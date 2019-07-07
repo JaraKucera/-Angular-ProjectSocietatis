@@ -1,0 +1,6 @@
+<div *ngIf="post">
+    <h3>{{ post.title }}</h3>
+    <p>Posted by {{ post.author }} &bull; {{ post.published.seconds*1000 | date: 'fullDate' }}</p>
+    <P>{{ post.content }}</P>
+    <p>{{ post.id }}</p>
+</div>

@@ -1,27 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { FeedComponent } from './components/feed/feed.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AppComponent } from './app.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { FeedComponent } from './components/feed/feed.component';
+import { FeedDetailComponent } from './components/feed-detail/feed-detail.component';
+import { FeedListComponent } from './components/feed-list/feed-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserProfileComponent,
-    FeedComponent
+    FeedComponent,
+    FeedDetailComponent,
+    FeedListComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HttpClientModule,
+    AngularFireStorageModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
