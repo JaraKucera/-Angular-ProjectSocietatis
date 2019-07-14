@@ -28,4 +28,20 @@ export class PostsService {
     this.postDoc= this.afs.doc<Posts>(`posts/${id}`);
     return this.postDoc.valueChanges();
   }
+
+  create(data : Posts){
+    this.postsCollection.add(data);
+  }
+
+  getPost(id: string){
+    return this.afs.doc<Posts>(`posts/${id}`);
+  }
+  
+  delete(id: string){
+    return this.getPost(id).delete();
+  }
+
+  update(id: string, FormData){
+    return this.getPost(id).update(FormData);
+  }
 }
