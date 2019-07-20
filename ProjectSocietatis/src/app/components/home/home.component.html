@@ -1,0 +1,22 @@
+<br><br><br><br>
+<h1>Home PAGE</h1>
+<div *ngIf="auth.user$ | async; then authenticated else guest">
+</div>
+<ng-template #guest>
+    <h4>Guest Home Page</h4>
+</ng-template>
+<ng-template #authenticated>
+    <div *ngIf="auth.user$ | async as user">
+        <h4>User Home Page</h4>
+        <section>
+                <div class="card" *ngFor="let post of posts | async ">
+                    <img class="card-img-top" src="{{post.image}}" alt="{{post.title}}">
+                    <div class="card-body" >
+                        <h5 class="card-title" routerLink="postdetail/{{post.id}}">{{post.title}}</h5>
+                        <p><small>Posted by {{post.author}} &bull; on {{ post.published.seconds*1000 | date: 'fullDate' }}</small></p>
+                        <a class="btn btn-primary" align="end" (click)="delete(post.id)">Delete</a>
+                    </div>
+                </div>
+            </section>
+    </div>
+</ng-template>

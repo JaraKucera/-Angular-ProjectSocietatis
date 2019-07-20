@@ -1,0 +1,19 @@
+<br><br><br><br>
+<h1>Post Creation Page</h1>
+<div *ngIf="auth.user$ | async as user">
+    <div>
+            <input type="file" name="file" id="file" accept="image/*" (change)="uploadImage($event)"/>
+        <div [hidden]="!uploadPercent">
+            
+            <progress value="{{uploadPercent | async}}" max="100"></progress>
+        </div>
+        <div [hidden]="!image">
+            <img [src]="image || '//:0'">
+        </div>
+    </div>
+    <form class="form" (ngSubmit)="createPost()">
+        <input type="text" placeholder="Post Title"id="title" [(ngModel)]="title" [ngModelOptions]="{standalone:true}"/><br>
+        <textarea placeholder="Post Content" id="content" [(ngModel)]="content" [ngModelOptions]="{standalone:true}"></textarea><br>
+        <input type="submit" value="{{ buttonText }}" class="btn" [disabled]="!title || !content">
+    </form>
+</div>

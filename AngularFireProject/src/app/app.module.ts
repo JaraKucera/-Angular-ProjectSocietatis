@@ -8,7 +8,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+//import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FeedComponent } from './components/feed/feed.component';
@@ -32,7 +32,7 @@ import { FeedListComponent } from './components/feed-list/feed-list.component';
     AngularFirestoreModule,
     HttpClientModule,
     AngularFireStorageModule,
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,6 +13,7 @@ import { User } from './user.model';
 })
 export class AuthService {
   user$: Observable<User>;
+  authState: any = null;
 
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
@@ -25,6 +26,16 @@ export class AuthService {
         }
       })
     );
+      this.afAuth.authState.subscribe(data => this.authState = data);
+
+   }
+
+   get authenticated():boolean{
+     return this.authState !== null;
+   }
+
+   get currentUserId():string{
+     return this.authenticated ? this.authState.uid : null;
    }
 
    async googleSignin(){
