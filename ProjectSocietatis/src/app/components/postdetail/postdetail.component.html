@@ -1,7 +1,10 @@
 <br><br><br><br>
-<div *ngIf="post">
-    <h3>{{ post.title }}</h3>
-    <p>Posted by {{ post.author }} &bull; {{ post.published.seconds*1000 | date: 'fullDate' }}</p>
-    <P>{{ post.content }}</P>
-    <p>{{ post.id }}</p>
-</div>
+<div class="card mb-3" *ngIf="post">
+    <h5 class="card-header">{{post.title}}</h5>
+    <img class="card-img-top" src="{{post.image}}">
+    <div class="card-body">
+      <h5 class="card-title">{{ post.id }}</h5>
+      <p class="card-text">{{ post.content }}</p>
+      <p class="card-text"><small class="text-muted">Posted by {{ post.author }} &bull; {{ post.published.seconds*1000 | date: 'fullDate' }}</small></p>
+    </div>
+  </div>

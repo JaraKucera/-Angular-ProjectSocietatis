@@ -14,7 +14,10 @@
                     <div class="card-body" >
                         <h5 class="card-title" routerLink="postdetail/{{post.id}}">{{post.title}}</h5>
                         <p><small>Posted by {{post.author}} &bull; on {{ post.published.seconds*1000 | date: 'fullDate' }}</small></p>
-                        <a class="btn btn-primary" align="end" (click)="delete(post.id)">Delete</a>
+                        <div *ngIf="auth.currentUserId === post.authorId">
+                            <a class="btn btn-primary" align="end" (click)="delete(post.id)">Delete</a>
+                        </div>
+                        
                     </div>
                 </div>
             </section>
