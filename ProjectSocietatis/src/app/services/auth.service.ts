@@ -4,7 +4,7 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, first } from 'rxjs/operators';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -55,5 +55,9 @@ export class AuthService {
 
   get currentUserId():string{
     return this.authenticated ? this.authState.uid : null;
+  }
+
+  getUser(){
+    return this.user$.pipe(first()).toPromise();
   }
 }

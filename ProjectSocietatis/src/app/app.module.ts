@@ -18,6 +18,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PostdetailComponent } from './components/postdetail/postdetail.component';
 import { PostcreateComponent } from './components/postcreate/postcreate.component';
 import { FormsModule } from '@angular/forms';
+import { ChatComponent } from './components/chat/chat.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     ProfileComponent,
     PostdetailComponent,
-    PostcreateComponent
+    PostcreateComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

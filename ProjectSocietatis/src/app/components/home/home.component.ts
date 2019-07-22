@@ -4,6 +4,7 @@ import { PostsService } from '../../services/posts.service';
 import { ActivatedRoute } from '@angular/router';
 import { Posts } from 'src/app/models/posts';
 import { Observable } from 'rxjs';
+import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   posts: Observable<Posts[]>;
 
-  constructor(public auth: AuthService, private psService: PostsService, private route: ActivatedRoute) { }
+  constructor(public auth: AuthService, private psService: PostsService, private route: ActivatedRoute, public cs: ChatService) { }
 
   ngOnInit() {
     this.posts = this.psService.getPosts();

@@ -1,5 +1,6 @@
 <br><br><br><br>
 <h1>Home PAGE</h1>
+<button class="button is-info" (click)="cs.create()">Create New Chat</button>
 <div *ngIf="auth.user$ | async; then authenticated else guest">
 </div>
 <ng-template #guest>
