@@ -4,6 +4,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import {
+  MatTabsModule,
+  MatSidenavModule,
+  MatCardModule
+} from '@angular/material';
+
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -39,7 +48,12 @@ import { ChatComponent } from './components/chat/chat.component';
     AngularFirestoreModule,
     HttpClientModule,
     AngularFireStorageModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatTabsModule,
+    MatCardModule
 
   ],
   providers: [],

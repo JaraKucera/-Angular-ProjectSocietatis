@@ -1,19 +1,35 @@
 <br><br><br><br>
-<h1>Post Creation Page</h1>
+<div id="createPostHeading">
+    <input class="form-control" type="text" placeholder="Create a Post" readonly>
+</div><br><br><br>
 <div *ngIf="auth.user$ | async as user">
     <div>
-            <input type="file" name="file" id="file" accept="image/*" (change)="uploadImage($event)"/>
+        <div class="form-group">
+                <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept="image/*" (change)="uploadImage($event)">
+                          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                </div>
+        </div>
         <div [hidden]="!uploadPercent">
-            
             <progress value="{{uploadPercent | async}}" max="100"></progress>
         </div>
         <div [hidden]="!image">
-            <img [src]="image || '//:0'">
+            <img [src]="image || '//:0'"><br>
         </div>
     </div>
     <form class="form" (ngSubmit)="createPost()">
-        <input type="text" placeholder="Post Title"id="title" [(ngModel)]="title" [ngModelOptions]="{standalone:true}"/><br>
-        <textarea placeholder="Post Content" id="content" [(ngModel)]="content" [ngModelOptions]="{standalone:true}"></textarea><br>
-        <input type="submit" value="{{ buttonText }}" class="btn" [disabled]="!title || !content">
+        <input type="text" placeholder="Post Title"id="title" [(ngModel)]="title" [ngModelOptions]="{standalone:true}" class="form-control form-control-lg"/><br>
+        <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Post Content</span>
+        </div>
+        <textarea aria-label="Post Content"class="form-control" id="content" [(ngModel)]="content" [ngModelOptions]="{standalone:true}"></textarea><br>
+        </div><br>
+        <input type="submit" value="{{ buttonText }}" class="btn btn-outline-secondary" [disabled]="!title || !content">
     </form>
 </div>

@@ -1,19 +1,46 @@
-<nav class="navbar fixed-top navbar-dark bg-dark">
-    <a class="navbar-brand" id="navTxt">Project Societatis</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="/">Home</a>
+<div *ngIf="auth.user$ | async; then navuser else navguest"></div>
+<ng-template #navuser>
+<nav class="navbar fixed-top  navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" id="navTxt" routerLink="/">Project Societatis</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <div *ngIf="auth.user$ | async as user">
+          <a class="nav-link" routerLink="profile/{{user.uid}}">Profile</a>
+        </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" (click)="auth.signOut()">LogOut</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="profile">Profile</a>
-          </li>
-        </ul>
-      </div>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="createpost">Create a Post</a>
+        </li>
+      </ul>
+    </div>
 </nav>
+</ng-template>
+<ng-template #navguest>
+    <nav class="navbar fixed-top  navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" id="navTxt" routerLink="/">Project Societatis</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" (click)="auth.googleSignin()">Login</a>
+                </li>
+            </ul>
+          </div>
+      </nav>
+</ng-template>
+

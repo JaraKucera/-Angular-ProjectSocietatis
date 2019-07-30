@@ -14,6 +14,8 @@ export class AuthService {
   user$: Observable<User>;
   authState: any = null;
 
+  
+
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) { 
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -59,5 +61,9 @@ export class AuthService {
 
   getUser(){
     return this.user$.pipe(first()).toPromise();
+  }
+
+  getUserById(id:string){
+    return this.afs.doc<User>(`users/${id}`);
   }
 }

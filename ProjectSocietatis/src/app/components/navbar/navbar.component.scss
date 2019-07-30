@@ -2,5 +2,44 @@
     color: white;
     text-decoration-color: white;
     text-align: center;
-    
 }
+.site-header {
+    background-color: rgba(0, 0, 0, .85);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    width:100%;
+  }
+  .site-header a {
+    color: rgb(255, 255, 255);
+    transition: ease-in-out color .15s;
+    color:rgb(255, 255, 255)!important;
+    
+  }
+  .site-header a:hover {
+    color: #8566;
+    text-decoration: none;
+  }
+  .overflow-hidden { overflow: hidden; }
+  .container {
+    max-width: 960px;
+  }
+  .py-2{
+    color: white;
+    text-decoration-color: white;
+    padding-top: .5rem!important;
+    padding-bottom: .5rem!important;
+    
+  }
+  .site-header a{
+    
+
+  }
+  a{
+      text-decoration: none;
+      background-color: transparent;
+      cursor: pointer;
+      
+  }
+  #text{
+      color: #999;
+  }

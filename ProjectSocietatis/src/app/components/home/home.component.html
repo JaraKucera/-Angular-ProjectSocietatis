@@ -1,6 +1,7 @@
 <br><br><br><br>
-<h1>Home PAGE</h1>
-<button class="button is-info" (click)="cs.create()">Create New Chat</button>
+
+
+<!--<button class="button is-info" (click)="cs.create()">Create New Chat</button>-->
 <div *ngIf="auth.user$ | async; then authenticated else guest">
 </div>
 <ng-template #guest>
@@ -8,19 +9,39 @@
 </ng-template>
 <ng-template #authenticated>
     <div *ngIf="auth.user$ | async as user">
-        <h4>User Home Page</h4>
+        
         <section>
-                <div class="card" *ngFor="let post of posts | async ">
-                    <img class="card-img-top" src="{{post.image}}" alt="{{post.title}}">
-                    <div class="card-body" >
-                        <h5 class="card-title" routerLink="postdetail/{{post.id}}">{{post.title}}</h5>
-                        <p><small>Posted by {{post.author}} &bull; on {{ post.published.seconds*1000 | date: 'fullDate' }}</small></p>
+                
+                <div *ngFor="let post of posts | async ">
+                   <!-- 
                         <div *ngIf="auth.currentUserId === post.authorId">
                             <a class="btn btn-primary" align="end" (click)="delete(post.id)">Delete</a>
                         </div>
                         
+                    
+                    
+                    -->
+                    <div class="card mb-4 shadow-sm">
+                        <img class="card-img-top" src="{{post.image}}" alt="{{post.title}}">
+                        <div class="card-body">
+                            <h2 class="card-text" routerLink="postdetail/{{post.id}}">{{post.title}}</h2>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="postdetail/{{post.id}}">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <div *ngIf="auth.currentUserId === post.authorId">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" (click)="delete(post.id)">Delete</button>
+                                    </div>
+                                </div>
+                                <small class="text-muted">Posted by <span routerLink="profile/{{post.authorId}}">{{post.author}}</span> &bull; on {{ post.published.seconds*1000 | date: 'fullDate' }}</small>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    
+                
+            </div>
+        
+                
             </section>
     </div>
 </ng-template>

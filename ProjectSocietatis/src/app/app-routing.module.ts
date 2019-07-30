@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'profile/:id', component: ProfileComponent},
   { path: 'createpost', component: PostcreateComponent},
   { path: 'chats/:id', component: ChatComponent },
+  { path: 'home/profile/:id',component: ProfileComponent},
   { path: "", redirectTo: "/home", pathMatch: "full" }
 
 ];
